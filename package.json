@@ -1,0 +1,14 @@
+{
+  "name": "calculator-testing",
+  "description": "FTS-TASK6- implementing unit testing on a string calculator",
+  "version": "1.0.0",
+  "main": "calculator.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Doha Hmeid",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}
