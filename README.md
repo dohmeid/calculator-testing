@@ -46,7 +46,7 @@ To run this application locally, follow these steps:
 
 4. Start the test using:
    ```
-    npm test![test](https://github.com/dohmeid/calculator-testing/assets/90987176/a6525a10-e384-44b0-9da9-f8f796320af0)
+    npm test
 
    ```
 5. You will see the number of passing and failing tests
