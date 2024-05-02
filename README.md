@@ -3,7 +3,7 @@
 ### FTS-TASK6- implementing unit testing on a string calculator
 
 ### :stars: Overview
-This project implements a simple string calculator function (calc function) and ensures it passes all provided test cases. The project follows the AAA (Arrange, Act, Assert) pattern and Test-Driven Development (TDD) approach. Additionally, it achieves a test coverage of 97%.
+This project implements a simple string calculator function (calc function) and ensures it passes all provided test cases. The project follows the AAA (Arrange, Act, Assert) pattern and Test-Driven Development (TDD) approach. Additionally, it achieves a test coverage of 97.7%.
 
 -----
 ### :dart: Features
