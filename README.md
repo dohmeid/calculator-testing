@@ -47,7 +47,6 @@ To run this application locally, follow these steps:
 4. Start the test using:
    ```
     npm test
-
    ```
 5. You will see the number of passing and failing tests
 
