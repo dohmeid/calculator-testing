@@ -1,6 +1,7 @@
 // calculator.test.js
 const calc = require("./calculator.js");
 
+/************************************************************* */
 describe("Calculator test on two numbers", () => {
   // Test case: Addition
   it("should return the correct sum of two numbers", () => {
@@ -37,11 +38,18 @@ describe("Calculator test on two numbers", () => {
     expect(calc(3.5, "*", 2)).toBe(7);
   });
 
+  it("should handle floating point numbers correctly", () => {
+    expect(calc(0.1, "+", 0.2)).toBeCloseTo(0.3);
+  });
+
   // Test case: Order of operations
   it("should follow the correct order of operations", () => {
     expect(calc(2, "+", 3, "*", 4)).toBe(14);
   });
+});
 
+/************************************************************* */
+describe("Calculator test on invalid arguments - error cases", () => {
   // Test case: Invalid operator
   it("should throw an error for an invalid operator", () => {
     expect(() => calc(5, "$", 3)).toThrow("Invalid operator");
@@ -57,39 +65,56 @@ describe("Calculator test on two numbers", () => {
     expect(() => calc(2, 3)).toThrow("Invalid input - missing arguments");
   });
 
-  // Test case: missing arguments (either number or operation)
-  it("should throw an error for missing arguments", () => {
+  // Test case: missing number argument
+  it("should throw an error for missing number arguments", () => {
     expect(() => calc(2, "+", 3, "-")).toThrow(
+      "Invalid input - missing arguments"
+    );
+  });
+
+  // Test case: missing operation arguments
+  it("should throw an error for missing operation arguments", () => {
+    expect(() => calc(2, "+", 3, 4)).toThrow(
       "Invalid input - missing arguments"
     );
   });
 });
 
+/************************************************************* */
 describe("Calculator test on multiple numbers", () => {
-  // Test case: More than two numbers
-  it("should return the correct result with more than two numbers", () => {
-    expect(calc(1, "+", 2, "+", 3, "+", 4)).toBe(10);
-  });
 
-  // Test case: handles an unknown amount of numbers
   it("should handle an unknown amount of numbers", () => {
     expect(calc(1, "+", 2, "+", 3, "+", 4)).toBe(10);
     expect(calc(1, "+", 2, "+", 3, "+", 4, "+", 5)).toBe(15);
     expect(calc(1, "+", 2, "+", 3, "+", 4, "+", 5, "+", 6)).toBe(21);
   });
 
-  // Test case: follow the correct order for operations precedence
   it("should follow the correct order of operations precedence", () => {
     expect(calc(10, "+", 15, "/", 3, "-", 2, "*", 8)).toBe(-1);
   });
 
-});
-
-
-describe("Calculator test on numbers bigger than 1000", () => {
-  // Test case: Numbers bigger than 1000 should be ignored
-  it("should ignore numbers bigger than 1000", () => {
-    expect(calc(2, "+", 1001)).toBe(2);
+  it("should handle expressions with multiple mixed operations correctly", () => {
+    expect(calc(1, "+", 2, "*", 3, "-", 4, "/", 2)).toEqual(5);
   });
 });
 
+
+/************************************************************* */
+describe("Calculator test on numbers bigger than 1000", () => {
+  it("should ignore numbers bigger than 1000 in case of addition", () => {
+    expect(calc(2, "+", 1001)).toBe(2);
+  });
+
+  it("should ignore numbers bigger than 1000 in case of subtraction", () => {
+    expect(calc(2, "-", 1001)).toBe(2);
+  });
+
+  it("should ignore numbers bigger than 1000 in case of multiplication", () => {
+    expect(calc(1200, "*", 2)).toEqual(0);
+  });
+
+  it("should ignore numbers bigger than 1000 in case of division", () => {
+    expect(calc(1200, "/", 2)).toEqual(0);
+  });
+
+});
