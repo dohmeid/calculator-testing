@@ -4,7 +4,8 @@
   "version": "1.0.0",
   "main": "calculator.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest --collectCoverage=true",
+    "coverage" : "jest --coverage"
   },
   "author": "Doha Hmeid",
   "license": "ISC",

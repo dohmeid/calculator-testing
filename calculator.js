@@ -2,7 +2,7 @@
 const calc = (...args) => {
   //the number of arguments passed must be at least 3 (num1,op,num2), also, for multiple operations, make sure the args are odd number
   if (args.length < 3 || args.length % 2 === 0) {
-    throw new Error("Invalid input");
+    throw new Error("Invalid input - missing arguments");
   }
 
   const ops = "+-*/"; //the valid operationa
@@ -13,7 +13,10 @@ const calc = (...args) => {
     //current token is a number, push to operands stack
     if (typeof args[i] === "number") {
       let operand = parseFloat(args[i]);
-      operandStack.push(operand);
+      if (operand > 1000) 
+        operandStack.push(0);
+      else 
+        operandStack.push(operand);
     }
 
     //current token is an operator, push to operators stack
@@ -23,7 +26,7 @@ const calc = (...args) => {
 
       //as long as prev op has same or greater precedence to curr op -> apply op prev to top two elements in operandStack
       while (operatorStack.length && hasPrecedence(currOp, prevOp)) {
-        let res = applyOperation(operatorStack,operandStack);
+        let res = applyOperation(operatorStack, operandStack);
         operandStack.push(res);
       }
       operatorStack.push(currOp);
@@ -42,7 +45,7 @@ const calc = (...args) => {
 
   //apply remaining ops to remaining values
   while (operatorStack.length) {
-    let res = applyOperation(operatorStack,operandStack);
+    let res = applyOperation(operatorStack, operandStack);
     operandStack.push(res);
   }
 
@@ -58,7 +61,7 @@ const hasPrecedence = (op1, op2) => {
 };
 
 //this function applies an operator from operatorStack on top 2 operands from operandStack and returns the result
-const applyOperation = (operatorStack,operandStack) => {
+const applyOperation = (operatorStack, operandStack) => {
   let op = operatorStack.pop();
   let num2 = operandStack.pop();
   let num1 = operandStack.pop();
@@ -76,7 +79,7 @@ const applyOperation = (operatorStack,operandStack) => {
       }
       return num1 / num2;
     default:
-      throw new Error("Invalid operator");
+      return 0;
   }
 };
 
