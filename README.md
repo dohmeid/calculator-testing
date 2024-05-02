@@ -3,11 +3,21 @@
 ### FTS-TASK6- implementing unit testing on a string calculator
 
 ### :stars: Overview
-This repository ...
+This project implements a simple string calculator function (calc function) and ensures it passes all provided test cases. The project follows the AAA (Arrange, Act, Assert) pattern and Test-Driven Development (TDD) approach. Additionally, it achieves a test coverage of 99%.
 
 -----
 ### :dart: Features
-...
+
+1. Creates a simple calculator function in (calculator.js) that evaluates the result for any math expressions.
+   
+         Inputs: String that contains +, -, *, / and numbers.
+         Output: the result of expression (Number)
+
+2. Passes some initial test cases to ensure that the calc function is properly implemented
+3. Increases the test coverage and ensures thorough testing by adding additional test cases. This approach allows for more robust validation of the calc function implementation.
+4. Allows calc to handle an unknown amount of numbers.
+5. Ignores numbers bigger than 1000, (eg: adding 2 + 1001  = 2)
+
 -----
 
 ### :space_invader: Technologies Used
@@ -18,3 +28,25 @@ This repository ...
 </div>
 
 -----
+
+
+### :joystick: Getting Started 
+To run this application locally, follow these steps:
+1. Clone the repository:
+   ```
+   git clone https://github.com/dohmeid/calculator-testing.git
+   ```
+2. Go to folder calculator-testing
+
+3. Install the required dependencies
+   ```
+   npm install --save-dev jest
+   ```
+
+4. Start the test using:
+   ```
+    npm test
+   ```
+5. You will see the number of passing and failing tests
+
+
