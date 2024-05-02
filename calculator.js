@@ -23,7 +23,7 @@ const calc = (...args) => {
 
       //as long as prev op has same or greater precedence to curr op -> apply op prev to top two elements in operandStack
       while (operatorStack.length && hasPrecedence(currOp, prevOp)) {
-        let res = applyOperation();
+        let res = applyOperation(operatorStack,operandStack);
         operandStack.push(res);
       }
       operatorStack.push(currOp);
@@ -42,7 +42,7 @@ const calc = (...args) => {
 
   //apply remaining ops to remaining values
   while (operatorStack.length) {
-    let res = applyOperation();
+    let res = applyOperation(operatorStack,operandStack);
     operandStack.push(res);
   }
 
@@ -58,7 +58,7 @@ const hasPrecedence = (op1, op2) => {
 };
 
 //this function applies an operator from operatorStack on top 2 operands from operandStack and returns the result
-const applyOperation = () => {
+const applyOperation = (operatorStack,operandStack) => {
   let op = operatorStack.pop();
   let num2 = operandStack.pop();
   let num1 = operandStack.pop();
